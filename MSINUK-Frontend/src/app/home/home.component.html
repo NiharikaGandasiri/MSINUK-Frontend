@@ -1,0 +1,31 @@
+<div class="container home">
+    <form (ngSubmit)="ngSubmit()">
+        <input type="text" [(ngModel)]= "university.universityName" name ="universityName"placeholder="University Name">
+        <input type="text" [(ngModel)]= "university.courses" name ="courses" placeholder="Course Name">
+        <select
+            class="custom-select mb-3"
+            [(ngModel)]= "university.departments" name ="departments">
+            <option value="">Chose department</option>
+            <option *ngFor="let department of departments">
+                {{ department }}
+            </option>
+            </select>
+        <input type="submit" value="Search">
+    </form>
+</div>
+<div style="height: 50px;"></div>
+<h2>Universities</h2>
+<table class = "table table-striped">
+    <tbody>
+        <tr class = "row row-cols-2">
+            <td *ngFor = " let uni of universities" class="col">
+                <a [routerLink]="['/university',uni.universityName]">
+                    <div>{{uni.universityName}}</div>
+                    <div>{{uni.address}}</div>
+                    <div>{{uni.courses}}</div>
+                    <div>{{uni.rating}}</div>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
