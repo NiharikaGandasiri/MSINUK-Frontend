@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { University } from '../university';
 import { UniversityService } from './university.service';
+import { UniversityDetails } from '../university-details';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { UniversityService } from './university.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  universities: University[];
+  universities: UniversityDetails[];
   university: University = new University();
 
   departments:String[] = ['medicine', 'Information Technology(IT)','automobile','Electonnics'];

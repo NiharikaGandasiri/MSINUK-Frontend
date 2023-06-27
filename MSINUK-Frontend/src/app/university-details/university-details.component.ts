@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute,} from '@angular/router';
 import { UniversityDetailsService } from './university-details.service';
-import { UniversityDetails } from './university-details';
+import { UniversityDetails } from '../university-details';
 
 @Component({
   selector: 'app-university-details',
@@ -10,7 +10,7 @@ import { UniversityDetails } from './university-details';
 })
 export class UniversityDetailsComponent {
     id: string;
-    universityDetails: any;
+    universityDetails: UniversityDetails;
     constructor(private route:ActivatedRoute,private service :UniversityDetailsService){}
 
     ngOnInit(): void{
