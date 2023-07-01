@@ -11,6 +11,10 @@ import { UniversityDetails } from '../university-details';
 export class UniversityDetailsComponent {
     id: string;
     universityDetails: UniversityDetails;
+    image1:string;
+    image2:string;
+    image3:string;
+    logo:string;
     constructor(private route:ActivatedRoute,private service :UniversityDetailsService){}
 
     ngOnInit(): void{
@@ -20,7 +24,12 @@ export class UniversityDetailsComponent {
             this.service.getUniversityById(this.id).subscribe(
               data=>{
                 this.universityDetails = data;
-               console.log(this.universityDetails);
+                this.image1=this.universityDetails.images[1];
+                this.image2=this.universityDetails.images[2];
+                this.image3=this.universityDetails.images[3];
+                this.logo=this.universityDetails.images[0];
+                
+               console.log(this.image3);
               });
         }
     }
