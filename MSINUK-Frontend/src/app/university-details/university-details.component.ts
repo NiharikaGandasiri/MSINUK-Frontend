@@ -15,6 +15,7 @@ export class UniversityDetailsComponent {
     image2:string;
     image3:string;
     logo:string;
+    map = new Map<String, String[]>();
     constructor(private route:ActivatedRoute,private service :UniversityDetailsService){}
 
     ngOnInit(): void{
@@ -28,8 +29,8 @@ export class UniversityDetailsComponent {
                 this.image2=this.universityDetails.images[2];
                 this.image3=this.universityDetails.images[3];
                 this.logo=this.universityDetails.images[0];
-                
-               console.log(this.image3);
+                this.map = this.universityDetails.courses;
+               console.log(this.map);
               });
         }
     }
