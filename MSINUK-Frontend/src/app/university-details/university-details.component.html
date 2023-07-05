@@ -30,6 +30,11 @@
     </div>
     </div>
     <ngb-rating [max]="5" [(rate)]="universityDetails.rating" [readonly]="true"></ngb-rating>
+    <div class="about"> 
+        <p>
+            {{universityDetails.description}}
+        </p>
+     </div>
     <ul>
         <li *ngFor="let department of map | keyvalue">
             {{department.key}}:

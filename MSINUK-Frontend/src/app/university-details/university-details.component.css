@@ -3,5 +3,10 @@
 
 }
 .title{
-    align-content:center ;
+    align-content:center;
+    background-color:beige;
+}
+.about{
+    font-style:normal;
+    color: cornflowerblue;
 }
