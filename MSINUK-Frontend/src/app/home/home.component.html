@@ -14,17 +14,21 @@
     </form>
 </div>
 <div style="height: 50px;"></div>
-<h2>Universities</h2>
-<table class = "table table-striped">
-    <tbody>
-        <tr class = "row row-cols-2">
-            <td *ngFor = " let uni of universities" class="col">
-                <a [routerLink]="['/university',uni.id]">
-                    <div><span><img src="assets/img/{{uni.images[0]}}" alt="logo"></span>{{uni.universityName}}</div>
-                    <div>{{uni.address}}</div>
-                    <ngb-rating [max]="5" [(rate)]="uni.rating" [readonly]="true"></ngb-rating><span>{{uni.rating}}</span>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div *ngIf="isSearchresults">
+    Search Results for:
+    <span *ngIf="university.universityName!=undefined">University Name: {{university.universityName}},</span><span *ngIf="university.courses!=undefined">Course Name: {{university.courses}},</span> <span *ngIf="university.departments!=undefined">Department: {{university.departments}}</span>
+</div>
+    <h2>Universities</h2>
+    <table class = "table table-striped">
+        <tbody>
+            <tr class = "row row-cols-2">
+                <td *ngFor = " let uni of universities" class="col">
+                    <a [routerLink]="['/university',uni.id]">
+                        <div><span><img src="assets/img/{{uni.images[0]}}" alt="logo"></span>{{uni.universityName}}</div>
+                        <div>{{uni.address}}</div>
+                        <ngb-rating [max]="5" [(rate)]="uni.rating" [readonly]="true"></ngb-rating><span>{{uni.rating}}</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>

@@ -11,10 +11,7 @@ import { UniversityDetails } from '../university-details';
 export class UniversityDetailsComponent {
     id: string;
     universityDetails: UniversityDetails;
-    image1:string;
-    image2:string;
-    image3:string;
-    logo:string;
+    hasUniversity:boolean = false
     map = new Map<String, String[]>();
     constructor(private route:ActivatedRoute,private service :UniversityDetailsService){}
 
@@ -25,12 +22,8 @@ export class UniversityDetailsComponent {
             this.service.getUniversityById(this.id).subscribe(
               data=>{
                 this.universityDetails = data;
-                this.image1=this.universityDetails.images[1];
-                this.image2=this.universityDetails.images[2];
-                this.image3=this.universityDetails.images[3];
-                this.logo=this.universityDetails.images[0];
+                this.hasUniversity=true;
                 this.map = this.universityDetails.courses;
-               console.log(this.map);
               });
         }
     }

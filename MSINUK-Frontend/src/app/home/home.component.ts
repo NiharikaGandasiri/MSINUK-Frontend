@@ -11,6 +11,7 @@ import { UniversityDetails } from '../university-details';
 export class HomeComponent {
   universities: UniversityDetails[];
   university: University = new University();
+  isSearchresults: boolean = false;
 
   departments:String[] = ['medicine', 'Information Technology(IT)','automobile','Electonnics'];
   constructor(private service:UniversityService){ }
@@ -25,6 +26,7 @@ export class HomeComponent {
       this.service.getUniversityByname(this.university).subscribe(
         data=>{
           this.universities=data;
+          this.isSearchresults =true;
         });
   }
 

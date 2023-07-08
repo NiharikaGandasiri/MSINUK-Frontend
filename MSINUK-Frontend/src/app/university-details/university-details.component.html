@@ -1,35 +1,36 @@
-<h1 class="title"><span><img src="assets/img/{{logo}}" alt="logo"></span>{{universityDetails.universityName}}</h1>
-<div id="content" class="row" style="margin-top: 20px;">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-mdb-interval="400">
-                <img src="assets/img/{{image1}}" class="d-block w-100 slide" alt="Slide1">
-               
+<div *ngIf="hasUniversity">
+    <h1 class="title"><span><img src="assets/img/{{universityDetails.images[0]}}" alt="logo"></span>{{universityDetails.universityName}}</h1>
+    <div id="content" class="row" style="margin-top: 20px;">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-item" data-mdb-interval="400">
-                <img src="assets/img/{{image2}}" class="d-block w-100 slide" alt="Slide2">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-mdb-interval="200">
+                    <img src="assets/img/{{universityDetails.images[1]}}" class="d-block w-100 slide" alt="Slide1">
                 
+                </div>
+                <div class="carousel-item" data-mdb-interval="200">
+                    <img src="assets/img/{{universityDetails.images[2]}}" class="d-block w-100 slide" alt="Slide2">
+
+                </div>
+                <div class="carousel-item" data-mdb-interval="200">
+                    <img src="assets/img/{{universityDetails.images[3]}}" class="d-block w-100 slide" alt="Slide3">
+                </div>
             </div>
-            <div class="carousel-item" data-mdb-interval="400">
-                <img src="assets/img/{{image3}}" class="d-block w-100 slide" alt="Slide3">
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-    </div>
-    <ngb-rating [max]="5" [(rate)]="universityDetails.rating" [readonly]="true"></ngb-rating>
+    <ngb-rating [max]="5" [(rate)]="universityDetails.rating" [readonly]="true"></ngb-rating> {{universityDetails.rating}}
     <div class="about"> 
         <p>
             {{universityDetails.description}}
@@ -43,3 +44,4 @@
             </ul>
         </li>
     </ul>
+</div>
