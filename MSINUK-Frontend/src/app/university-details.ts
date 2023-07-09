@@ -4,7 +4,6 @@ export class UniversityDetails {
     address:string;
     courses:any;
     rating:number;
-    departments:string[];
     description:string;
 	images:string[];
 	contactDetails:string;

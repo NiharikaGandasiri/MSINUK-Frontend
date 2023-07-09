@@ -37,7 +37,7 @@
         </p>
      </div>
     <ul>
-        <li *ngFor="let department of map | keyvalue">
+        <li *ngFor="let department of courseMap | keyvalue">
             {{department.key}}:
             <ul *ngFor="let course of department.value">
                   {{course}}
@@ -45,3 +45,4 @@
         </li>
     </ul>
 </div>
+<div #mapContainer id="map"></div>
