@@ -30,7 +30,7 @@
             </button>
         </div>
     </div>
-    <ngb-rating [max]="5" [(rate)]="universityDetails.rating" [readonly]="true"></ngb-rating> {{universityDetails.rating}}
+    <ngb-rating [max]="5" [(rate)]="universityDetails.rating" [readonly]="true"></ngb-rating>  {{universityDetails.rating}} <a href="{{universityDetails.reviews}}" target="_blank">Reviews</a>
     <div class="about"> 
         <p>
             {{universityDetails.description}}
