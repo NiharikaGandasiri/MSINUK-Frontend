@@ -10,3 +10,43 @@
     font-style:normal;
     color: cornflowerblue;
 }
+.department {
+    color: #4b4b4b;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 1.375rem;
+    font-family: EffraRegular,arial,helvetica,sans-serif;
+    margin: 0px;
+}
+.course-Container{
+    border: 1px solid #ccc;
+}
+.course-Container:first-of-type{    
+    border-radius: 5px 5px 0 0;
+}
+.active, .department:hover {
+    background-color: #555;
+    color: #fff;
+  }
+.department:before {
+    content: '\002B';
+    color: #4b4b4b;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+
+}
+.course {
+    display: none;
+    background-color: #fff;
+}
+.course:hover {
+    background-color: #fff;
+    color: #4b4b4b;
+}
+li {
+    list-style-type: square;
+}

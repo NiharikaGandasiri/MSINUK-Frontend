@@ -6,7 +6,7 @@ import { UniversityDetailsComponent } from './university-details/university-deta
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
-  {path:'university/:id/:university', component:UniversityDetailsComponent},
+  {path:'university/:id/:university', component:UniversityDetailsComponent}
 ];
 
 @NgModule({

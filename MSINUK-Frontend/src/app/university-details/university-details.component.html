@@ -36,13 +36,20 @@
             {{universityDetails.description}}
         </p>
      </div>
-    <ul>
-        <li *ngFor="let department of courseMap | keyvalue">
-            {{department.key}}:
-            <ul *ngFor="let course of department.value">
-                  {{course}}
+     <h2>All Post-Graduation courses:</h2>
+    <div>
+        <div class="course-Container" *ngFor="let department of courseMap | keyvalue">
+            <ul class ="department" (click)="collapse($event)">
+                {{department.key}}
             </ul>
-        </li>
-    </ul>
+            <div class ="course">
+                <ul>
+                    <li *ngFor="let course of department.value">
+                        {{course}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 <div #mapContainer id="map"></div>

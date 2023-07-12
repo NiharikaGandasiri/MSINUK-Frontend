@@ -13,8 +13,6 @@ export class UniversityDetailsComponent implements AfterViewInit {
     universityDetails: UniversityDetails;
     hasUniversity:boolean = false
     courseMap = new Map<String, String[]>();
-    // @ViewChild('map', { static: false }) mapElement: ElementRef;
-    // map: google.maps.Map;
     title = 'angular-gmap';
     @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
     map: google.maps.Map;
@@ -40,17 +38,26 @@ export class UniversityDetailsComponent implements AfterViewInit {
                 this.hasUniversity=true;
                 this.courseMap = this.universityDetails.courses;
               });
-        }
-        
+        }  
     }
-    // ngAfterViewInit() {
-    //   const mapProperties = {
-    //     center: new google.maps.LatLng(35.2271, -80.8431),
-    //     zoom: 15,
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-    //   };
-    //   this.map = new google.maps.Map(this.mapElement.nativeElement,mapProperties);
-    // }
+    collapse(event:any){
+      console.log(event.target.nextSibling);
+      const isexpanded = event.target.nextSibling.style.display=="block";
+      if(isexpanded){
+        event.target.nextSibling.style.display = "none";
+      }
+      else{
+        this.expand(event);
+      }
+      
+    }
+    expand(event:any){
+      var divsToHide = Array.from(document.getElementsByClassName('course') as HTMLCollectionOf<HTMLElement>);
+      for(var i = 0; i < divsToHide.length; i++){
+         divsToHide[i].style.display = "none";
+      }
+      event.target.nextSibling.style.display = event.target.nextSibling.style.display=="none"?"block":"none";
+    }
 
     ngAfterViewInit() {
       this.mapInitializer();

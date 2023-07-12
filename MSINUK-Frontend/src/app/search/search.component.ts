@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-search',
