@@ -1,0 +1,19 @@
+.university {
+    position: relative;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    width: 48%;
+    margin: 1%;
+    align-items: center;
+}
+.university:hover{
+    transform: scale(1.1);
+    z-index: 1;
+}
