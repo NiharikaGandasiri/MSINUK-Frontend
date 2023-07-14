@@ -12,7 +12,7 @@ export class UniversityDetailsComponent implements AfterViewInit {
     id: string;
     universityDetails: UniversityDetails;
     hasUniversity:boolean = false
-    courseMap = new Map<String, String[]>();
+    courseMap:Map<string,string[]> = new Map<string, string[]>();
     title = 'angular-gmap';
     @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
     map: google.maps.Map;
@@ -40,6 +40,17 @@ export class UniversityDetailsComponent implements AfterViewInit {
               });
         }  
     }
+    sendit(value:string){
+      var tempMap=this.universityDetails.courses;
+      var filteredMap = new Map<string, string[]>();
+      for (const property in tempMap) {
+        const result = tempMap[property].filter((s: string) => s.toLowerCase().includes(value.toLowerCase()));
+        if(result.length>0){
+          filteredMap.set(property,tempMap[property]);
+        }
+      }
+      this.courseMap = filteredMap;
+    }
     collapse(event:any){
       console.log(event.target.nextSibling);
       const isexpanded = event.target.nextSibling.style.display=="block";
@@ -64,7 +75,6 @@ export class UniversityDetailsComponent implements AfterViewInit {
     }
 
     mapInitializer() {
-      console.log(this.gmap);
       this.map = new google.maps.Map(this.gmap.nativeElement, 
       this.mapOptions);
       const marker = new google.maps.Marker({
@@ -74,3 +84,4 @@ export class UniversityDetailsComponent implements AfterViewInit {
       marker.setMap(this.map);
     }
 }
+

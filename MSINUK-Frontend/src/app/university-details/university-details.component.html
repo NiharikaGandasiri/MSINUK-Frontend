@@ -36,8 +36,10 @@
         <p>
             {{universityDetails.description}}
         </p>
-     </div>
-     <h2>All Post-Graduation courses:</h2>
+    </div>
+    <h2>All Post-Graduation courses:</h2>
+    <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
+    <input class="Search" placeholder="Filter By Course Name..." #yourInput type="text" (keyup)="sendit(yourInput.value)" />
     <div>
         <div class="course-Container" *ngFor="let department of courseMap | keyvalue">
             <ul class ="department" (click)="collapse($event)">
@@ -51,6 +53,11 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <div style="margin-top: 10px;">
+        <h3>Contact Us:</h3>
+        <p><b>Address:</b> {{universityDetails.address}}</p>
+        <p>Telephone: <b>{{universityDetails.contactDetails}}</b></p>
     </div>
 </div>
 <div #mapContainer id="map"></div>
