@@ -4111,6 +4111,11 @@ map-stream@0.0.7:
   resolved "https://registry.npmjs.org/map-stream/-/map-stream-0.0.7.tgz"
   integrity sha512-C0X0KQmGm3N2ftbTGBhSyuydQ+vV1LC3f3zPvT3RXHXNZrvfPZcoXp/N5DOa8vedX/rTMm2CjTtivFg2STJMRQ==
 
+material-icons@^1.13.8:
+  version "1.13.8"
+  resolved "https://registry.npmjs.org/material-icons/-/material-icons-1.13.8.tgz"
+  integrity sha512-vnLGXKa/AwFUxUgkiX39EpYVFttPhDQcKdVylIqmUUqz+Eo/O9A3BkdPCU3/G5cJOTezHi5B/b8sEpKYgUNAwQ==
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz"

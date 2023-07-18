@@ -9,13 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { UniversityDetailsComponent } from './university-details/university-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     HomeComponent,
-    UniversityDetailsComponent
+    UniversityDetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

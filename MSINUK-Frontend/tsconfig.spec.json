@@ -5,8 +5,7 @@
     "outDir": "./out-tsc/spec",
     "types": [
       "jasmine",
-      "googlemaps",
-      "jquery"
+      "googlemaps"
     ]
   },
   "include": [
