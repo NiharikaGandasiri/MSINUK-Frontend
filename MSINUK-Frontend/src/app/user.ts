@@ -1,8 +1,9 @@
 export class User {
     id: number;
-    firstname: string;
-    lastname: string;
-    username: string;
+    firstName: string;
+    lastName: string;
+    userName: string;
     password: string;
     lastVisited: number;
+    wishList:number[];
 }

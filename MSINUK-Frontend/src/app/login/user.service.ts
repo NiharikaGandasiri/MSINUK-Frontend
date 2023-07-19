@@ -12,7 +12,9 @@ export class UserService {
   private getUrl = "http://localhost:8080/api/v1/user";
   constructor(private httpClient:HttpClient) { }
   addUser(user: User) : Observable<object>{
-   return this.httpClient.post(this.baseUrl,user);
+    let params = new HttpParams();
+    params = params.append('user', JSON.stringify(user));
+   return this.httpClient.get(this.baseUrl,{params:params});
   }
   checkUser(username: string, userpass: string):Observable<String> {
     let params = new HttpParams();

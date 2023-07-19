@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from './user.service';
 
 @Component({
@@ -14,8 +14,11 @@ export class LoginComponent {
   username:string;
   user: User = new User();
   isCheked:boolean= false;
+  loginResponse:any;
+  isError:boolean =false;
+  errorMessage:string;
 
-  constructor(private route:ActivatedRoute,private service :UserService){}
+  constructor(private service :UserService, private router:Router){}
 
   ngOnInit(){
     
@@ -23,13 +26,28 @@ export class LoginComponent {
   LogIn(){
     this.service.checkUser(this.username,this.userpass).subscribe((data:any)=>
     {
-      console.log(data);
+      this.loginResponse = data;
+      if(this.loginResponse.status){
+        this.router.navigateByUrl("/");
+      }
+      else{
+        this.isError=true;
+        this.errorMessage = this.loginResponse.message;
+      }
+      
     })
   }
   addUser(){
     console.log(this.user);
       this.service.addUser(this.user).subscribe((data:any)=>{
-        console.log(data);
+        this.loginResponse = data;
+        if(this.loginResponse.status){
+          this.router.navigateByUrl("/");
+        }
+        else{
+          this.isError=true;
+          this.errorMessage = this.loginResponse.message;
+        }
       });
   }
   signin(){

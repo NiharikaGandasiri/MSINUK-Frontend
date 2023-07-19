@@ -179,3 +179,9 @@ input[type=checkbox]:not(old) {
     -o-transform: translateY(0);
     -ms-transform: translateY(0);
 }
+.error{
+    color: red;
+    font-weight: 400;
+    font-family: Poppins;
+    font-size: 15px;
+}
