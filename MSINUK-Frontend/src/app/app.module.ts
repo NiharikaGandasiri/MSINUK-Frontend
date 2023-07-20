@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { UniversityDetailsComponent } from './university-details/university-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { AvatarModule } from 'ngx-avatars';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    AvatarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

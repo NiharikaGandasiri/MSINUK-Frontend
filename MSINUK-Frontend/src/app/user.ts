@@ -5,5 +5,5 @@ export class User {
     userName: string;
     password: string;
     lastVisited: number;
-    wishList:number[];
+    wishlist:number[];
 }

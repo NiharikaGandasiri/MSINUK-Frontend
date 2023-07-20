@@ -27,7 +27,10 @@ export class LoginComponent {
     this.service.checkUser(this.username,this.userpass).subscribe((data:any)=>
     {
       this.loginResponse = data;
+      const user = data.user;
+      console.log(user);
       if(this.loginResponse.status){
+        this.service.changeUser(user);
         this.router.navigateByUrl("/");
       }
       else{
