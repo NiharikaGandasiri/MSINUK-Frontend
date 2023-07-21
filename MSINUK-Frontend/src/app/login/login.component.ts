@@ -45,7 +45,7 @@ export class LoginComponent {
       this.service.addUser(this.user).subscribe((data:any)=>{
         this.loginResponse = data;
         if(this.loginResponse.status){
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl("/login");
         }
         else{
           this.isError=true;

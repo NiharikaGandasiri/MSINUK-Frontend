@@ -1,5 +1,12 @@
 <div *ngIf="hasUniversity">
-    <h1 class="title"><span><img src="assets/img/{{universityDetails.images[0]}}" alt="logo"></span>{{universityDetails.universityName}}</h1>
+    <h1 class="title">
+        <span>
+            <img src="assets/img/{{universityDetails.images[0]}}" alt="logo">
+        </span>
+        {{universityDetails.universityName}}
+        <span *ngIf="isUser" class="material-icons bookmark" (click)="addToWishlist()">bookmark_border</span>
+        <span *ngIf="isBookmark" class="material-icons bookmark" (click)="removeFromWishlist()">bookmark</span>
+    </h1>
     <div id="content" class="row" style="margin-top: 20px;">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">

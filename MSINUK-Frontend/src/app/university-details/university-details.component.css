@@ -63,3 +63,6 @@ li {
     outline: 0.25rem solid #0f8ce6; 
     outline-offset: 0.125rem;
 }
+.bookmark{
+    cursor: pointer;
+}

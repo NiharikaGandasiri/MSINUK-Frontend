@@ -16,8 +16,7 @@ export class AppComponent {
   ngOnInit(){
     this.subscription = this.service.currentUser.subscribe(user => {
       this.user = user;
-    }
-      );
+    });
   }
   profile(){
    let submenu= document.getElementById("subMenu");

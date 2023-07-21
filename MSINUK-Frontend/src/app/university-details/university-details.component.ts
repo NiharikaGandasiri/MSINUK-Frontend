@@ -2,6 +2,9 @@ import { ViewChild, AfterViewInit, Component, ElementRef } from '@angular/core';
 import { ActivatedRoute,} from '@angular/router';
 import { UniversityDetailsService } from './university-details.service';
 import { UniversityDetails } from '../university-details';
+import { User } from '../user';
+import { Subscription } from 'rxjs';
+import { UserService } from '../login/user.service';
 
 @Component({
   selector: 'app-university-details',
@@ -12,6 +15,10 @@ export class UniversityDetailsComponent implements AfterViewInit {
     id: string;
     universityDetails: UniversityDetails;
     hasUniversity:boolean = false
+    user:User;
+    subscription: Subscription;
+    isUser:boolean=false;
+    isBookmark:boolean=false;
     courseMap:Map<string,string[]> = new Map<string, string[]>();
     title = 'angular-gmap';
     @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
@@ -26,7 +33,7 @@ export class UniversityDetailsComponent implements AfterViewInit {
     };
 
     
-    constructor(private route:ActivatedRoute,private service :UniversityDetailsService){}
+    constructor(private route:ActivatedRoute,private service :UniversityDetailsService,private userService:UserService){}
 
     ngOnInit(): void{
       const id = this.route.snapshot.paramMap.get('id');
@@ -37,8 +44,19 @@ export class UniversityDetailsComponent implements AfterViewInit {
                 this.universityDetails = data;
                 this.hasUniversity=true;
                 this.courseMap = this.universityDetails.courses;
+                this.getUser();
               });
+        }    
+    }
+    getUser(){
+      this.subscription = this.userService.currentUser.subscribe(user => {
+        this.user = user;
+        if(this.user.firstName!=undefined){
+          this.isBookmark=this.user.wishlist.indexOf(this.universityDetails.id)>-1;
+          this.isUser=!this.isBookmark;
+          this.updateLastVisited();
         }  
+      });
     }
     sendit(value:string){
       var tempMap=this.universityDetails.courses;
@@ -50,6 +68,45 @@ export class UniversityDetailsComponent implements AfterViewInit {
         }
       }
       this.courseMap = filteredMap;
+    } 
+    addToWishlist(){
+       if(this.user.wishlist.indexOf(this.universityDetails.id)<0){
+        this.user.wishlist.push(this.universityDetails.id);
+          this.userService.updateUser(this.user).subscribe((data:any)=>{
+            if(data.status){
+              console.log(data);
+              this.isBookmark=true;
+              this.isUser=false;
+              this.userService.changeUser(this.user);
+            }
+          });
+          console.log(this.user);
+       }
+    }
+    updateLastVisited(){
+      if(this.user.lastVisited!=this.universityDetails.id){
+          this.user.lastVisited=this.universityDetails.id;
+          this.userService.updateUser(this.user).subscribe((data:any)=>{
+            if(data.status){
+              this.userService.changeUser(this.user);     
+            }
+          });
+      }
+      console.log(this.user);
+    }
+    removeFromWishlist(){
+      const index = this.user.wishlist.indexOf(this.universityDetails.id);
+      if (index > -1) { 
+        this.user.wishlist.splice(index, 1);
+      }
+        this.userService.addUser(this.user).subscribe((data:any)=>{
+          if(data.status){
+            console.log(data);
+            this.isBookmark=false;
+            this.isUser=true;
+            this.userService.changeUser(this.user);
+          }
+        });
     }
     collapse(event:any){
       console.log(event.target.nextSibling);

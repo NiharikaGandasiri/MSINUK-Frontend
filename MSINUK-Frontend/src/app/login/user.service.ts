@@ -12,6 +12,7 @@ export class UserService {
   currentUser = this.userObject.asObservable();
   private baseUrl = "http://localhost:8080/api/v1/addUser";
   private getUrl = "http://localhost:8080/api/v1/user";
+  private updateUrl = "http://localhost:8080/api/v1/updateUser";
   constructor(private httpClient:HttpClient) { }
   addUser(user: User) : Observable<object>{
     let params = new HttpParams();
@@ -23,6 +24,11 @@ export class UserService {
     params = params.append('username', username);
     params = params.append('password', userpass);
     return this.httpClient.get<object>(this.getUrl,{params:params});
+  }
+  updateUser(user: User) : Observable<object>{
+    let params = new HttpParams();
+    params = params.append('user', JSON.stringify(user));
+   return this.httpClient.get(this.updateUrl,{params:params});
   }
   changeUser(user: User) {
     this.userObject.next(user);
