@@ -18,6 +18,7 @@ export class HomeComponent {
   lastVisited: UniversityDetails = new UniversityDetails();
   isSearchresults: boolean = false;
   user:User;
+  isLoggedIn:boolean = false;
   subscription: Subscription;
 
   departments:String[] = ['medicine', 'Information Technology(IT)','automobile','Electonnics'];
@@ -27,10 +28,7 @@ export class HomeComponent {
     this.service.getUniversityList().subscribe(
       data=>{
         this.universities = data;
-      });
-      this.subscription = this.userService.currentUser.subscribe(user => {
-        this.user = user;
-        this.userProfile();
+        this.getUser();
       });
   }
   ngSubmit():void{
@@ -40,16 +38,26 @@ export class HomeComponent {
           this.isSearchresults =true;
         });
   }
+  getUser(){
+    this.subscription = this.userService.currentUser.subscribe(user => {
+      this.user = user;
+      if(user.firstName!=undefined){
+        this.isLoggedIn=true;
+        this.userProfile();
+      }
+    });
+  }
   userProfile() {
     var temp = this.universities;
+    const wishlist = new Array();
     for(const university in temp) {
       if(temp[university].id==this.user.lastVisited){
         this.lastVisited = temp[university];
       }
-      this.wishlist = temp.filter((s:UniversityDetails)=>{
-        !this.user.wishlist.includes(s.id);
-      });
+      if(this.user.wishlist.includes(temp[university].id)){
+        wishlist.push(temp[university]);
+      }
     }
+    this.wishlist = wishlist;
   }
-
 }

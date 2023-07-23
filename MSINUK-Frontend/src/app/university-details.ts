@@ -7,5 +7,6 @@ export class UniversityDetails {
     description:string;
 	images:string[];
 	contactDetails:string;
-    reviews: String;
+    reviews: string;
+    courseMap:string
 }

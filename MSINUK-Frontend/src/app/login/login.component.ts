@@ -28,7 +28,6 @@ export class LoginComponent {
     {
       this.loginResponse = data;
       const user = data.user;
-      console.log(user);
       if(this.loginResponse.status){
         this.service.changeUser(user);
         this.router.navigateByUrl("/");

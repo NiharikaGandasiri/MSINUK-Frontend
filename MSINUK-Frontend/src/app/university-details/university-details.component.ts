@@ -17,6 +17,7 @@ export class UniversityDetailsComponent implements AfterViewInit {
     hasUniversity:boolean = false
     user:User;
     subscription: Subscription;
+    courseObj:any;
     isUser:boolean=false;
     isBookmark:boolean=false;
     courseMap:Map<string,string[]> = new Map<string, string[]>();
@@ -44,6 +45,7 @@ export class UniversityDetailsComponent implements AfterViewInit {
                 this.universityDetails = data;
                 this.hasUniversity=true;
                 this.courseMap = this.universityDetails.courses;
+                this.courseObj = JSON.parse(this.universityDetails.courseMap);
                 this.getUser();
               });
         }    

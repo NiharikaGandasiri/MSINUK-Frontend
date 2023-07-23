@@ -55,7 +55,7 @@
             <div class ="course">
                 <ul>
                     <li *ngFor="let course of department.value">
-                        {{course}}
+                        <a href="{{courseObj[course]}}" target="_blank">{{course}}</a>
                     </li>
                 </ul>
             </div>
