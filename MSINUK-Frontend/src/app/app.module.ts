@@ -11,13 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AvatarModule } from 'ngx-avatars';
 import { WishListComponent } from './wish-list/wish-list.component';
+import { PartTimeJobsComponent } from './part-time-jobs/part-time-jobs.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UniversityDetailsComponent,
     LoginComponent,
-    WishListComponent
+    WishListComponent,
+    PartTimeJobsComponent
   ],
   imports: [
     BrowserModule,
