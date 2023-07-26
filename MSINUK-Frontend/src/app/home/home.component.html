@@ -2,13 +2,12 @@
     <form (ngSubmit)="ngSubmit()">
         <input type="text" [(ngModel)]= "university.universityName" name ="universityName"placeholder="University Name">
         <input type="text" [(ngModel)]= "university.courses" name ="courses" placeholder="Course Name">
-        <select
-            class="custom-select mb-3"
+        <select class="mb-3"
             [(ngModel)]= "university.departments" name ="departments">
-            <option value="">Chose department</option>
-            <option *ngFor="let department of departments">
-                {{ department }}
-            </option>
+                <option value="">Choose department</option>
+                <option *ngFor="let department of departments">
+                    {{ department }}
+                </option>
             </select>
         <input type="submit" value="Search">
     </form>
@@ -21,7 +20,7 @@
     <table class = "table table-striped">
         <tbody>
             <h2 *ngIf="isLoggedIn">Your Last Visited</h2>
-            <tr class = "row row-cols-2" *ngIf="isLoggedIn">
+            <tr class = "row row-cols-2" *ngIf="isLoggedIn && lastVisited.universityName!=undefined">
                 <td [routerLink]="['/university',lastVisited.id,lastVisited.universityName]"class="col university">
                         <img src="assets/img/{{lastVisited.images[0]}}" alt="logo">
                         <h4>{{lastVisited.universityName}}</h4>
@@ -30,7 +29,7 @@
                 </td>
             </tr>
             <h2>Universities</h2>
-            <tr class = "row row-cols-2">
+            <tr class = "universityRow row row-cols-2">
                 <td [routerLink]="['/university',uni.id,uni.universityName]" *ngFor = " let uni of universities" class="col university">
                     <img src="assets/img/{{uni.images[0]}}" alt="logo">
                     <h4>{{uni.universityName}}</h4>

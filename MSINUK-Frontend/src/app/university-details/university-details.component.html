@@ -45,7 +45,6 @@
         </p>
     </div>
     <h2>All Post-Graduation courses:</h2>
-    <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
     <input class="Search" placeholder="Filter By Course Name..." #yourInput type="text" (keyup)="sendit(yourInput.value)" />
     <div>
         <div class="course-Container" *ngFor="let department of courseMap | keyvalue">
@@ -55,7 +54,8 @@
             <div class ="course">
                 <ul>
                     <li *ngFor="let course of department.value">
-                        <a href="{{courseObj['commonurl']+courseObj[course]}}" target="_blank">{{course}}</a>
+                        <a *ngIf="courseObj!=null" href="{{courseObj['commonurl']+courseObj[course]}}" target="_blank">{{course}}</a>
+                        <a href="#" *ngIf="courseObj==null">{{course}}</a>
                     </li>
                 </ul>
             </div>

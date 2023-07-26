@@ -29,6 +29,7 @@ export class HomeComponent {
       data=>{
         this.universities = data;
         this.getUser();
+        this.university.departments="";
       });
   }
   ngSubmit():void{
