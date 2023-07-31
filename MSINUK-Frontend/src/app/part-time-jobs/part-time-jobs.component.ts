@@ -12,6 +12,12 @@ export class PartTimeJobsComponent {
   filteredJobs:PartTimeJobs[];
   isRetrived:boolean=false;
   backupdata: PartTimeJobs[];
+  portalUrl:string;
+  isPortalOpen:boolean = false;
+  portalUrls = {
+    cvLibrary:'https://www.cv-library.co.uk/',
+    simplyhired:'https://www.simplyhired.com/'
+  }
 
   constructor(private service :PartTimeJobsService){}
   ngOnInit():void {
@@ -28,5 +34,20 @@ export class PartTimeJobsComponent {
       this.filteredJobs = tempMap.filter((s: PartTimeJobs) => s.location.toLowerCase().includes(value.toLowerCase()));
     }
     this.jobs = this.filteredJobs;
+  }
+  getPortal(name:string) {
+    this.isPortalOpen=true;
+    switch(name){
+      case 'cvLibrary':{
+        this.portalUrl=this.portalUrls.cvLibrary;
+        break;
+      }
+      case 'simplyhired':{
+        this.portalUrl=this.portalUrls.simplyhired;
+        break;
+      }
+    }
+    var ele = document.getElementById("portal");
+    ele!=null?ele.setAttribute("src",this.portalUrl):console.log("element not exist");
   }
 }

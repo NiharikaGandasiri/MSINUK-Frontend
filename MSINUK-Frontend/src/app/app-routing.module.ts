@@ -5,6 +5,7 @@ import { UniversityDetailsComponent } from './university-details/university-deta
 import { LoginComponent } from './login/login.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { PartTimeJobsComponent } from './part-time-jobs/part-time-jobs.component';
+import { ApartmentsComponent } from './apartments/apartments.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'university/:id/:university', component:UniversityDetailsComponent},
   {path:'login', component:LoginComponent},
   {path:'wishlist', component:WishListComponent},
-  {path:'partTime', component:PartTimeJobsComponent}
+  {path:'partTime', component:PartTimeJobsComponent},
+  {path:'apartments', component:ApartmentsComponent}
 ];
 
 @NgModule({

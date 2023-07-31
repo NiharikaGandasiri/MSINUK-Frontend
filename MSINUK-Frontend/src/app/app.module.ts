@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { AvatarModule } from 'ngx-avatars';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { PartTimeJobsComponent } from './part-time-jobs/part-time-jobs.component';
+import { ApartmentsComponent } from './apartments/apartments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { PartTimeJobsComponent } from './part-time-jobs/part-time-jobs.component
     UniversityDetailsComponent,
     LoginComponent,
     WishListComponent,
-    PartTimeJobsComponent
+    PartTimeJobsComponent,
+    ApartmentsComponent
   ],
   imports: [
     BrowserModule,
